@@ -1,1386 +1,454 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مصمم جرافيك احترافي | بورتفوليو</title>
-  <meta name="description" content="مصمم جرافيك متخصص في بناء الشعارات، الهويات البصرية، وتصاميم السوشيال ميديا الاحترافية." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصمم جرافيك محترف - معرض أعمال (نموذج 2)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* الألوان والخطوط الأساسية للنموذج الثاني */
+        :root {
+            --accent-color: #16625a; /* اللون الزيتي الفاخر */
+            --text-color: #2c3e50; /* لون نص داكن للتباين */
+            --bg-color: #ffffff; /* خلفية بيضاء نقية */
+            --light-gray: #f0f0f0;
+            --border-color: #e0e0e0;
+        }
 
-  <!-- ===================================================
-       خط Google Fonts - Cairo
-       يمكن تغيير الخط إلى Tajawal بتعديل الرابط أدناه
-       =================================================== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        body {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-  <!-- ===================================================
-       مكتبة Tailwind CSS عبر CDN
-       =================================================== -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        /* تأثير Glassmorphism للهيدر */
+        .glassmorphism-v2 {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(22, 98, 90, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
 
-  <!-- ===================================================
-       مكتبة Font Awesome للأيقونات
-       =================================================== -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+        /* الأزرار */
+        .btn-primary-v2 {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-  <!-- ===================================================
-       إعداد Tailwind Config - اللون الرئيسي الزيتي
-       =================================================== -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            olive: {
-              DEFAULT: '#16625a',
-              light:   '#1d7d73',
-              dark:    '#0f4540',
-              pale:    '#e8f4f3',
-              muted:   '#c2dedd',
+        .btn-primary-v2:hover {
+            background-color: #114d47; /* درجة أغمق من اللون الزيتي */
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary-v2 {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 0.85rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary-v2:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* قسم معرض الأعمال - البطاقات */
+        .portfolio-card-v2 {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .portfolio-card-v2:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-card-v2 img {
+            width: 100%;
+            height: 300px; /* ارتفاع ثابت للصور */
+            object-fit: cover;
+            border-radius: 1rem 1rem 0 0;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .portfolio-card-v2:hover img {
+            transform: scale(1.03);
+        }
+
+        .portfolio-overlay-v2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(22, 98, 90, 0.9) 0%, rgba(22, 98, 90, 0.6) 70%, rgba(22, 98, 90, 0) 100%);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 0 0 1rem 1rem;
+            text-align: right;
+        }
+
+        .portfolio-card-v2:hover .portfolio-overlay-v2 {
+            transform: translateY(0);
+        }
+
+        /* نافذة المودال المنبثقة */
+        .modal-v2 {
+            display: none; /* مخفية افتراضياً */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            animation: fadeInV2 0.4s ease-out;
+        }
+
+        .modal-content-v2 {
+            background-color: var(--bg-color);
+            margin: auto;
+            padding: 30px;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            animation: slideInV2 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            direction: rtl;
+            text-align: right;
+        }
+
+        .modal-content-v2 img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-button-v2 {
+            color: var(--accent-color);
+            position: absolute;
+            top: 20px;
+            left: 20px; /* ليتناسب مع RTL */
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button-v2:hover,
+        .close-button-v2:focus {
+            color: #0e4a44;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* تحريك المودال */
+        @keyframes fadeInV2 {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInV2 {
+            from { transform: translateY(-70px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* قسم التواصل - أيقونات */
+        .contact-icon-v2 {
+            color: white;
+            background-color: var(--accent-color);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-icon-v2:hover {
+            background-color: #114d47;
+            transform: translateY(-3px);
+        }
+
+        /* التجاوبية */
+        @media (max-width: 768px) {
+            .navbar-links-v2 {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                position: absolute;
+                top: 72px; /* ارتفاع الهيدر */
+                left: 0;
+                padding: 1.5rem;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             }
-          },
-          fontFamily: {
-            cairo: ['Cairo', 'sans-serif'],
-          }
+            .navbar-links-v2.active {
+                display: flex;
+            }
+            .navbar-links-v2 a {
+                margin: 0.75rem 0;
+                padding: 0.75rem;
+                border-bottom: 1px solid var(--light-gray);
+                text-align: center;
+            }
+            .hamburger-menu-v2 {
+                display: block;
+            }
+            .hero-section-v2 h1 {
+                font-size: 2.8rem;
+            }
+            .hero-section-v2 p {
+                font-size: 1.1rem;
+            }
+            .portfolio-grid-v2 {
+                grid-template-columns: 1fr;
+            }
+            .contact-info-grid-v2 {
+                grid-template-columns: 1fr;
+            }
         }
-      }
-    }
-  </script>
-
-  <style>
-    /* ===================================================
-       الأنماط العامة والمتغيرات
-       =================================================== */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: #f9fafb;
-      color: #1a1a2e;
-      overflow-x: hidden;
-    }
-
-    /* ===================================================
-       شريط التمرير المخصص
-       =================================================== */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f1f1; }
-    ::-webkit-scrollbar-thumb { background: #16625a; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #0f4540; }
-
-    /* ===================================================
-       الهيدر - تأثير Glassmorphism
-       =================================================== */
-    #navbar {
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background-color: rgba(255, 255, 255, 0.75);
-      border-bottom: 1px solid rgba(22, 98, 90, 0.12);
-      transition: all 0.35s ease;
-    }
-
-    #navbar.scrolled {
-      background-color: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 4px 30px rgba(22, 98, 90, 0.1);
-    }
-
-    /* رابط التنقل - تأثير الخط السفلي */
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      right: 0;
-      width: 0;
-      height: 2px;
-      background: #16625a;
-      border-radius: 2px;
-      transition: width 0.35s ease;
-    }
-    .nav-link:hover::after,
-    .nav-link.active::after { width: 100%; }
-    .nav-link:hover { color: #16625a; }
-
-    /* ===================================================
-       قسم Hero - الخلفية والنص
-       =================================================== */
-    #hero {
-      background: linear-gradient(135deg, #f0faf9 0%, #e8f4f3 40%, #f9fafb 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* دوائر زخرفية في الخلفية */
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -12;
-      left: ;
-      width: ;
-      height: ;
-      background: (circle, (22,98,90,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      right: -80px;
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(22,98,90,0.06) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    /* تأثير الكتابة المتحركة */
-    .typed-cursor {
-      display: inline-block;
-      width: 3px;
-      height: 1em;
-      background: #16625a;
-      margin-right: 4px;
-      vertical-align: middle;
-      animation: blink 0.8s step-end infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
-
-    /* ===================================================
-       بطاقات الأعمال - Portfolio Cards
-       =================================================== */
-    .portfolio-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-                  box-shadow 0.4s ease;
-      background: #fff;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.07);
-    }
-    .portfolio-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 20px 50px rgba(22, 98, 90, 0.18);
-    }
-
-    /* طبقة التغطية عند Hover */
-    .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(22,98,90,0.92) 0%, rgba(22,98,90,0.4) 60%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1.5rem;
-    }
-    .portfolio-card:hover .card-overlay { opacity: 1; }
-
-    .card-overlay-content {
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-    .portfolio-card:hover .card-overlay-content { transform: translateY(0); }
-
-    /* صورة البطاقة */
-    .card-img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .portfolio-card:hover .card-img { transform: scale(1.06); }
-
-    /* ===================================================
-       Modal - النافذة المنبثقة
-       =================================================== */
-    #modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 30, 28, 0.75);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
-    }
-    #modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    #modal-box {
-      background: #fff;
-      border-radius: 20px;
-      max-width: 780px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      transform: scale(0.88) translateY(30px);
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
-      opacity: 0;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-    }
-    #modal-overlay.active #modal-box {
-      transform: scale(1) translateY(0);
-      opacity: 1;
-    }
-
-    /* ===================================================
-       أزرار CTA
-       =================================================== */
-    .btn-primary {
-      background: #16625a;
-      color: #fff;
-      border: 2px solid #16625a;
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    .btn-primary:hover {
-      background: #0f4540;
-      border-color: #0f4540;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(22,98,90,0.35);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: #16625a;
-      border: 2px solid #16625a;
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    .btn-outline:hover {
-      background: #16625a;
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(22,98,90,0.25);
-    }
-
-    /* ===================================================
-       أزرار التواصل الاجتماعي
-       =================================================== */
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 1rem 1.5rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-    .contact-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
-
-    /* ===================================================
-       حقول النموذج
-       =================================================== */
-    .form-input {
-      width: 100%;
-      padding: 0.85rem 1.1rem;
-      border: 1.5px solid #d1d5db;
-      border-radius: 10px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.95rem;
-      color: #1a1a2e;
-      background: #fff;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      outline: none;
-    }
-    .form-input:focus {
-      border-color: #16625a;
-      box-shadow: 0 0 0 3px rgba(22,98,90,0.12);
-    }
-    .form-input::placeholder { color: #9ca3af; }
-
-    /* ===================================================
-       قسم الإحصائيات
-       =================================================== */
-    .stat-card {
-      text-align: center;
-      padding: 1.5rem;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 2px 15px rgba(22,98,90,0.08);
-      transition: transform 0.3s ease;
-    }
-    .stat-card:hover { transform: translateY(-4px); }
-
-    /* ===================================================
-       تأثير ظهور العناصر عند التمرير (Scroll Animation)
-       =================================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===================================================
-       فلاتر الأعمال
-       =================================================== */
-    .filter-btn {
-      padding: 0.45rem 1.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: 1.5px solid #d1d5db;
-      background: #fff;
-      color: #6b7280;
-      transition: all 0.3s ease;
-    }
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: #16625a;
-      border-color: #16625a;
-      color: #fff;
-    }
-
-    /* ===================================================
-       الفوتر
-       =================================================== */
-    footer {
-      background: linear-gradient(135deg, #0f4540 0%, #16625a 100%);
-    }
-
-    /* ===================================================
-       تأثير نبضة على أيقونة الواتساب
-       =================================================== */
-    .whatsapp-pulse {
-      position: relative;
-    }
-    .whatsapp-pulse::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: rgba(37, 211, 102, 0.3);
-      animation: pulse-ring 1.8s ease-out infinite;
-    }
-    @keyframes pulse-ring {
-      0%   { transform: scale(0.8); opacity: 0.8; }
-      100% { transform: scale(1.5); opacity: 0; }
-    }
-
-    /* ===================================================
-       مؤشر التحميل للصور
-       =================================================== */
-    .img-skeleton {
-      background: linear-gradient(90deg, #e8f4f3 25%, #c2dedd 50%, #e8f4f3 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    /* ===================================================
-       تعديلات الاستجابة للشاشات الصغيرة
-       =================================================== */
-    @media (max-width: 640px) {
-      .card-img { height: 200px; }
-      #hero h1 { font-size: 2rem !important; }
-    }
-  </style>
+    </style>
 </head>
+<body class="text-right">
 
-<body class="font-cairo">
-
-  <!-- ===================================================
-       الهيدر / شريط التنقل
-       =================================================== -->
-  <header id="navbar" class="fixed top-0 right-0 left-0 z-50 py-3 px-4 md:px-8">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between">
-
-      <!-- الشعار النصي -->
-      <a href="#hero" class="flex items-center gap-2 group">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black text-lg"
-             style="background: linear-gradient(135deg, #16625a, #1d7d73);">أ</div>
-        <span class="font-black text-xl tracking-tight" style="color:#16625a;">
-          أبو محمد<span class="text-gray-800">. ديزاين</span>
-        </span>
-      </a>
-
-      <!-- روابط التنقل - الشاشات الكبيرة -->
-      <ul class="hidden md:flex items-center gap-8 text-gray-600 font-semibold text-[0.95rem]">
-        <li><a href="#hero"      class="nav-link active">الرئيسية</a></li>
-        <li><a href="#portfolio" class="nav-link">أعمالي</a></li>
-        <li><a href="#about"     class="nav-link">عني</a></li>
-        <li><a href="#contact"   class="nav-link">تواصل معي</a></li>
-      </ul>
-
-      <!-- زر التواصل + زر القائمة للجوال -->
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden md:inline-flex btn-primary text-sm py-2 px-5">
-          <i class="fa-solid fa-paper-plane"></i> تواصل معي
-        </a>
-        <!-- زر القائمة الجانبية للجوال -->
-        <button id="menu-toggle" class="md:hidden w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 bg-white/80 text-gray-600"
-                aria-label="القائمة">
-          <i class="fa-solid fa-bars text-lg"></i>
-        </button>
-      </div>
-    </nav>
-
-    <!-- القائمة الجانبية للجوال -->
-    <div id="mobile-menu"
-         class="md:hidden overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-      <ul class="flex flex-col gap-1 pt-3 pb-2 px-2 text-gray-700 font-semibold text-[1rem]">
-        <li><a href="#hero"      class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">الرئيسية</a></li>
-        <li><a href="#portfolio" class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">أعمالي</a></li>
-        <li><a href="#about"     class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">عني</a></li>
-        <li><a href="#contact"   class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">تواصل معي</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- ===================================================
-       القسم الرئيسي - Hero Section
-       =================================================== -->
-  <section id="hero" class="min-h-screen flex items-center pt-20 pb-16 px-4 md:px-8">
-    <div class="max-w-6xl mx-auto w-full">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- المحتوى النصي -->
-        <div class="order-2 md:order-1">
-          <!-- شارة صغيرة -->
-          <div class="inline-flex items-center gap-2 bg-white border border-olive-muted text-olive font-semibold text-sm px-4 py-2 rounded-full mb-6 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-            متاح للعمل الآن
-          </div>
-
-          <!-- العنوان الرئيسي -->
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-gray-900 mb-5">
-            أصنع
-            <span class="relative inline-block">
-              <span id="typed-text" class="text-olive"></span><span class="typed-cursor"></span>
-            </span>
-            <br/>تُعبّر عن هويتك
-          </h1>
-
-          <!-- الوصف -->
-          <p class="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg">
-            مصمم جرافيك متخصص في بناء <strong class="text-gray-700">الشعارات</strong>،
-            <strong class="text-gray-700">الهويات البصرية</strong>، وتصاميم
-            <strong class="text-gray-700">السوشيال ميديا</strong> الاحترافية التي تترك أثراً لا يُنسى.
-          </p>
-
-          <!-- أزرار CTA -->
-          <div class="flex flex-wrap gap-4">
-            <a href="#portfolio" class="btn-primary">
-              <i class="fa-solid fa-eye"></i> شاهد أعمالي
-            </a>
-            <a href="#contact" class="btn-outline">
-              <i class="fa-solid fa-envelope"></i> تواصل معي
-            </a>
-          </div>
-
-          <!-- إحصائيات سريعة -->
-          <div class="flex flex-wrap gap-6 mt-10 pt-8 border-t border-gray-100">
-            <div>
-              <div class="text-3xl font-black text-olive">+150</div>
-              <div class="text-gray-500 text-sm font-medium">مشروع مكتمل</div>
+    <!-- الهيدر (Navigation Bar) - النموذج الثاني -->
+    <header id="navbar-v2" class="fixed top-0 left-0 w-full z-50 p-5 glassmorphism-v2 transition-all duration-300">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="text-3xl font-extrabold" style="color: var(--accent-color);">اسم المصمم</div>
+            <div class="hidden md:flex space-x-10 space-x-reverse navbar-links-v2">
+                <a href="#hero-v2" class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-300">الرئيسية</a>
+                <a href="#portfolio-v2" class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-300">أعمالي</a>
+                <a href="#contact-v2" class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-300">تواصل معي</a>
             </div>
-            <div class="w-px bg-gray-200"></div>
-            <div>
-              <div class="text-3xl font-black text-olive">+80</div>
-              <div class="text-gray-500 text-sm font-medium">عميل راضٍ</div>
+            <div class="md:hidden hamburger-menu-v2 cursor-pointer text-gray-700 text-3xl">
+                <i class="fas fa-bars"></i>
             </div>
-            <div class="w-px bg-gray-200"></div>
-            <div>
-              <div class="text-3xl font-black text-olive">5+</div>
-              <div class="text-gray-500 text-sm font-medium">سنوات خبرة</div>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي (Hero Section) - النموذج الثاني -->
+    <section id="hero-v2" class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdyYXBoaWMlMjBkZXNpZ258ZW53MHx8fHwxNzIwNDQ0ODAxfDA&ixlib=rb-4.0.3&q=80&w=1920');">
+        <div class="absolute inset-0 bg-black opacity-65"></div>
+        <div class="relative z-10 text-white p-8 max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                إبداع بلا حدود: نصمم رؤيتك، نصنع تأثيرك
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 font-light">
+                متخصص في صياغة الهويات البصرية التي تروي قصصاً، وتصاميم السوشيال ميديا التي تأسرك.
+            </p>
+            <div class="flex justify-center space-x-6 space-x-reverse">
+                <a href="#portfolio-v2" class="btn-primary-v2">استكشف أعمالي</a>
+                <a href="#contact-v2" class="btn-secondary-v2">ابدأ مشروعك الآن</a>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- الصورة الشخصية -->
-        <div class="order-1 md:order-2 flex justify-center">
-          <div class="relative">
-            <!-- الدائرة الخلفية الزخرفية -->
-            <div class="absolute inset-0 rounded-full scale-110"
-                 style="background: radial-gradient(circle, rgba(22,98,90,0.12) 0%, transparent 70%);"></div>
-
-            <!-- ===================================================
-                 صورة المصمم الشخصية
-                 استبدل الرابط أدناه بصورتك الشخصية
-                 مثال: src="images/profile.jpg"
-                 =================================================== -->
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=480&h=480&fit=crop&crop=face"
-              alt="صورة المصمم"
-              class="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-white shadow-2xl relative z-10"
-            />
-
-            <!-- شارة التخصص -->
-            <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2 z-20 border border-gray-100">
-              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg"
-                   style="background: linear-gradient(135deg, #16625a, #1d7d73);">
-                <i class="fa-solid fa-pen-nib"></i>
-              </div>
-              <div>
-                <div class="font-black text-gray-800 text-sm leading-none">مصمم ومبدع بصري</div>
-                <div class="text-olive text-xs font-semibold mt-0.5">Visual Creator</div>
-              </div>
-            </div>
-
-            <!-- شارة الخبرة -->
-            <div class="absolute -top-4 -left-4 bg-olive text-white rounded-2xl shadow-xl px-4 py-3 z-20">
-              <div class="font-black text-2xl leading-none">5+</div>
-              <div class="text-olive-muted text-xs font-semibold">سنوات خبرة</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================================================
-       قسم "عني" - About Section
-       =================================================== -->
-  <section id="about" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-6xl mx-auto">
-
-      <!-- عنوان القسم -->
-      <div class="text-center mb-14 reveal">
-        <span class="text-olive font-bold text-sm uppercase tracking-widest">من أنا</span>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">قصتي مع التصميم</h2>
-        <div class="w-16 h-1 rounded-full mx-auto mt-4" style="background:#16625a;"></div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- النص -->
-        <div class="reveal">
-          <p class="text-gray-600 text-lg leading-relaxed mb-5">
-            أنا مصمم جرافيك شغوف بالتفاصيل، أؤمن بأن كل علامة تجارية تحمل روحاً خاصة تستحق أن تُعبَّر عنها بصرياً بأجمل صورة ممكنة.
-          </p>
-          <p class="text-gray-600 text-lg leading-relaxed mb-8">
-            أتخصص في تصميم <strong class="text-gray-800">الهويات البصرية المتكاملة</strong>، الشعارات الاحترافية، وتصاميم منصات التواصل الاجتماعي التي تجذب الانتباه وتحقق أهداف العلامة التجارية.
-          </p>
-
-          <!-- المهارات -->
-          <div class="space-y-4">
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصميم الشعارات والهوية البصرية</span><span class="text-olive">95%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:95%; transition: width 1.5s ease;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصاميم السوشيال ميديا</span><span class="text-olive">90%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:90; transition: width 1.5 ease;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصميم المطبوعات والإعلانات</span><span class="text-olive">85%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:85; transition: width 1.5s ease;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصميم واجهات المستخدم (UI)</span><span class="text-olive">80%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:80; transition: width 1.5 ease;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- بطاقات الأدوات -->
-        <div class="grid grid-cols-2 gap-4 reveal">
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: (135deg, #16625a, #1d7d73);">
-              <i class="fa-brands fa-adobe"></i>
-            </div>
-            <div class="font-bold text-gray-800">Adobe Illustrator</div>
-            <div class="text-gray-400 text-sm mt-1">متقدم</div>
-          </div>
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: (135deg, #16625a, #1d7d73);">
-              <i class="fa-solid fa-layer-group"></i>
-            </div>
-            <div class="font-bold text-gray-800">Adobe Photoshop</div>
-            <div class="text-gray-400 text-sm mt-1">متقدم</div>
-          </div>
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: (135deg, #16625a, #1d7d73);">
-              <i class="fa-solid fa-vector-square"></i>
-            </div>
-            <div class="font-bold text-gray-800">Figma</div>
-            <div class="text-gray-400 text-sm mt-1">محترف</div>
-          </div>
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: (135, #16625a, #1d7d73);">
-              <i class="fa-solid fa-film"></i>
-            </div>
-            <div class="font-bold text-gray-800">After Effects</div>
-            <div class="text-gray-400 text-sm mt-1">متوسط</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================================================
-       معرض الأعمال - Portfolio Section
-       =================================================== -->
-  <section id="portfolio" class="py-20 px-4 md:px-8" style="background:#f9fafb;">
-    <div class="max-w-6xl mx-auto">
-
-      <!-- عنوان القسم -->
-      <div class="text-center mb-10 reveal">
-        <span class="text-olive font-bold text-sm uppercase tracking-widest">معرض الأعمال</span>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">أحدث أعمالي</h2>
-        <div class="w-16 h-1 rounded-full mx-auto mt-4" style="background:#16625a;"></div>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">مجموعة مختارة من أبرز مشاريعي في تصميم الهويات البصرية والسوشيال ميديا</p>
-      </div>
-
-      <!-- أزرار الفلترة -->
-      <div class="flex flex-wrap justify-center gap-3 mb-10 reveal">
-        <button class="filter-btn active" data-filter="all">الكل</button>
-        <button class="filter-btn" data-filter="logo">شعارات</button>
-        <button class="filter-btn" data-filter="social">سوشيال ميديا</button>
-        <button class="filter-btn" data-filter="branding">هوية بصرية</button>
-        <button class="filter-btn" data-filter="print">مطبوعات</button>
-      </div>
-
-      <!-- شبكة الأعمال -->
-      <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!--
-          ===================================================
-          بطاقات الأعمال
-          لاستبدال الصور: غيّر قيمة data-img في كل بطاقة
-          مثال: data-img="images/project1.jpg"
-          وأيضاً قيمة src في الـ img داخل البطاقة
-          ===================================================
-        -->
-
-        <!-- بطاقة 1 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار مطعم الأصالة"
-             data-desc="تصميم شعار احترافي لمطعم سعودي متخصص في الأكلات التراثية، يجمع بين الأصالة والحداثة في تصميم يعكس هوية المكان."
-             data-img="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop"
-             data-tags="شعار، هوية بصرية، مطعم"
-             onclick="openModal()">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop"
-               alt="شعار مطعم الأصالة" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار مطعم الأصالة</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار مطعم الأصالة</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار وهوية بصرية</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 2 - سوشيال ميديا -->
-        <div class="portfolio-card reveal"
-             data-category="social"
-             data-title="حملة سوشيال ميديا - عطور"
-             data-desc="تصميم مجموعة متكاملة من البوستات لحملة إطلاق عطر فاخر، تعتمد على التصوير الفوتوغرافي الاحترافي مع تصاميم راقية تعكس فخامة المنتج."
-             data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
-             data-tags="سوشيال ميديا، عطور، حملة إعلانية"
-             onclick="openModal()">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
-               alt="حملة سوشيال ميديا عطور" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">سوشيال ميديا</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">حملة سوشيال ميديا - عطور</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">حملة سوشيال ميديا - عطور</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم بوستات وإعلانات</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 3 - هوية بصرية -->
-        <div class="portfolio-card reveal"
-             data-category="branding"
-             data-title="هوية بصرية - شركة تقنية"
-             data-desc="تصميم هوية بصرية متكاملة لشركة ناشئة في مجال التقنية، تشمل الشعار، بطاقات الأعمال، الأوراق الرسمية، والموشن جرافيك."
-             data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
-             data-tags="هوية بصرية، تقنية، شركة ناشئة"
-             onclick="openModal()">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
-               alt="هوية بصرية شركة تقنية" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">هوية بصرية</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">هوية بصرية - شركة تقنية</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">هوية بصرية - شركة تقنية</h3>
-            <p class="text-gray-400 text-sm mt-1">هوية بصرية متكاملة</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 4 - مطبوعات -->
-        <div class="portfolio-card reveal"
-             data-category="print"
-             data-title="تصميم منيو مطعم فاخر"
-             data-desc="تصميم منيو احترافي لمطعم فاخر، يعتمد على تصميم راقٍ يعكس مستوى المطعم ويسهل على الزبائن الاختيار بشكل مريح وجميل."
-             data-img="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop"
-             data-tags="مطبوعات، منيو، مطعم"
-             onclick="openModal()">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop"
-               alt="تصميم منيو مطعم" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">مطبوعات</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">تصميم منيو مطعم فاخر</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">تصميم منيو مطعم فاخر</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم مطبوعات</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 5 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار مركز لياقة بدنية"
-             data-desc="تصميم شعار ديناميكي وقوي لمركز لياقة بدنية، يعبّر عن الطاقة والحيوية مع الحفاظ على البساطة والوضوح في جميع الأحجام."
-             data-img="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop"
-             data-tags="شعار، رياضة، لياقة"
-             onclick="openModal()">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop"
-               alt="شعار مركز لياقة" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار مركز لياقة بدنية</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار مركز لياقة بدنية</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 6 - سوشيال ميديا -->
-        <div class="portfolio-card reveal"
-             data-category="social"
-             data-title="حملة رمضان - متجر إلكتروني"
-             data-desc="تصميم حملة سوشيال ميديا متكاملة لشهر رمضان المبارك لمتجر إلكتروني، تشمل بوستات، ستوريز، وإعلانات ممولة بتصاميم احتفالية راقية."
-             data-img="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&h=600&fit=crop"
-             data-tags="سوشيال ميديا، رمضان، متجر"
-             onclick="openModal()">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&h=600&fit=crop"
-               alt="حملة رمضان" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">سوشيال ميديا</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">حملة رمضان - متجر إلكتروني</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">حملة رمضان - متجر إلكتروني</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم حملة إعلانية</p>
-          </div>
-        </div>
-
-      </div>
-      <!-- نهاية شبكة الأعمال -->
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       Modal - النافذة المنبثقة لتفاصيل العمل
-       =================================================== -->
-  <div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"
-       onclick="handleModalClick(event)">
-    <div id="modal-box">
-
-      <!-- زر الإغلاق -->
-      <div class="flex items-center justify-between p-5 border-b border-gray-100">
-        <h2 id="modal-title" class="font-black text-xl text-gray-900"></h2>
-        <button onclick="closeModal()"
-                class="w-9 h-9 rounded-full bg-gray-100 hover:bg-red-50 hover:text-red-500 flex items-center justify-center text-gray-500 transition-colors"
-                aria-label="إغلاق">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <!-- صورة العمل -->
-      <div class="overflow-hidden">
-        <!-- ===================================================
-             صورة المشروع في النافذة المنبثقة
-             تُحدَّث تلقائياً من بيانات البطاقة
-             =================================================== -->
-        <img id="modal-img" src="" alt="" class="w-full max-h-80 object-cover" />
-      </div>
-
-      <!-- تفاصيل العمل -->
-      <div class="p-6">
-        <p id="modal-desc" class="text-gray-600 leading-relaxed text-base mb-5"></p>
-        <div class="flex flex-wrap gap-2 mb-6" id="modal-tags"></div>
-        <div class="flex flex-wrap gap-3">
-          <a href="#contact" onclick="closeModal()"
-             class="btn-primary text-sm py-2.5 px-5">
-            <i class="fa-solid fa-paper-plane"></i> طلب مشروع مماثل
-          </a>
-          <button onclick="closeModal()"
-                  class="btn-outline text-sm py-2.5 px-5">
-            <i class="fa-solid fa-arrow-right"></i> العودة للأعمال
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ===================================================
-       قسم التواصل - Contact Section
-       =================================================== -->
-  <section id="contact" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-5xl mx-auto">
-
-      <!-- عنوان القسم -->
-      <div class="text-center mb-14 reveal">
-        <span class="text-olive font-bold text-sm uppercase tracking-widest">تواصل معي</span>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">هل لديك مشروع في ذهنك؟</h2>
-        <div class="w-16 h-1 rounded-full mx-auto mt-4" style="background:#16625a;"></div>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">تواصل معي الآن وسأكون سعيداً بمناقشة مشروعك وتقديم أفضل الحلول الإبداعية</p>
-      </div>
-
-      <div class="grid md:grid-cols-5 gap-10">
-
-        <!-- معلومات التواصل -->
-        <div class="md:col-span-2 space-y-5 reveal">
-
-          <h3 class="font-black text-xl text-gray-800 mb-6">تواصل مباشرة</h3>
-
-          <!-- ===================================================
-               زر واتساب
-               الرقم: 0507440452 | يمكن تعديل الرابط أدناه
-               =================================================== -->
-          <a href="https://wa.me/966507440452"
-             target="_blank" rel="noopener noreferrer"
-             class="contact-btn w-full"
-             style="background: (, #25d366, #128c7e); color: white;">
-            <div class="relative whatsapp-pulse">
-              <i class="fa-brands fa-whatsapp text-2xl relative z-10"></i>
-            </div>
-            <div>
-              <div class="font-black text-base">واتساب</div>
-              <div class="text-white/80 text-sm font-medium" dir="ltr">0507440452</div>
-            </div>
-            <i class="fa-solid fa-arrow-left mr-auto opacity-60"></i>
-          </a>
-
-          <!-- ===================================================
-               زر تويتر (X)
-               الرابط: https://x.com/ax_9a9
-               =================================================== -->
-          <a href="https://x.com/ax_9a9"
-             target="_blank" rel="noopener noreferrer"
-             class="contact-btn w-full"
-             style="background: (, #1a1a2e, #16213e); color: white;">
-            <i class="fa-brands fa-x-twitter text-2xl"></i>
-            <div>
-              <div class="font-black text-base">تويتر (X)</div>
-              <div class="text-white/80 text-sm font-medium" dir="ltr">@ax_9a9</div>
-            </div>
-            <i class="fa-solid fa-arrow-left mr-auto opacity-60"></i>
-          </a>
-
-          <!-- بريد إلكتروني -->
-          <a href="mailto:your@email.com"
-             class="contact-btn w-full"
-             style="background: (, #16625a, #1d7d73); color: white;">
-            <i class="fa-solid fa-envelope text-2xl"></i>
-            <div>
-              <!-- ===================================================
-                   استبدل البريد الإلكتروني بعنوانك الحقيقي
-                   =================================================== -->
-              <div class="font-black text-base">البريد الإلكتروني</div>
-              <div class="text-white/80 text-sm font-medium" dir="ltr">your@email.com</div>
-            </div>
-            <i class="fa-solid fa-arrow-left mr-auto opacity-60"></i>
-          </a>
-
-          <!-- وقت الاستجابة -->
-          <div class="bg-olive-pale border border-olive-muted rounded-2xl p-4 flex items-center gap-3 mt-4">
-            <div class="w-10 h-10 rounded-xl bg-olive flex items-center justify-center text-white flex-shrink-0">
-              <i class="fa-solid fa-clock text-sm"></i>
-            </div>
-            <div>
-              <div class="font-bold text-gray-800 text-sm">وقت الاستجابة</div>
-              <div class="text-gray-500 text-sm">خلال 24 ساعة كحد أقصى</div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- نموذج التواصل -->
-        <div class="md:col-span-3 reveal">
-          <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100">
-            <h3 class="font-black text-xl text-gray-800 mb-6">أرسل رسالة</h3>
-
-            <form id="contact-form" onsubmit="handleFormSubmit(event)" novalidate>
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="name">
-                    الاسم الكامل <span class="text-red-400">*</span>
-                  </label>
-                  <input type="text" id="name" name="name" required
-                         class="form-input" placeholder="محمد أحمد" />
+    <!-- معرض الأعمال (Portfolio Grid) - النموذج الثاني -->
+    <section id="portfolio-v2" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-extrabold text-center mb-16" style="color: var(--accent-color);">أعمالي المميزة</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 portfolio-grid-v2">
+                <!-- بطاقة عمل 1 -->
+                <div class="portfolio-card-v2" data-title="تصميم شعار لعلامة تجارية فاخرة" data-description="شعار أنيق وبسيط يعكس فخامة وجودة المنتجات، مع التركيز على التفاصيل الدقيقة." data-image="https://images.unsplash.com/photo-1596526131083-0424a6e03ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBsb2dvJTIwZGVzaWdufGVufDB8fHx8MTcyMDQ0NDgwMnww&ixlib=rb-4.0.3&q=80&w=1080">
+                    <img src="https://images.unsplash.com/photo-1596526131083-0424a6e03ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBsb2dvJTIwZGVzaWdufGVufDB8fHx8MTcyMDQ0NDgwMnww&ixlib=rb-4.0.3&q=80&w=1080" alt="تصميم شعار لعلامة تجارية فاخرة">
+                    <div class="portfolio-overlay-v2">
+                        <h3 class="text-2xl font-bold mb-2">شعار لعلامة تجارية فاخرة</h3>
+                        <p class="text-base">أناقة وبساطة تعبر عن الفخامة</p>
+                    </div>
                 </div>
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="phone">
-                    رقم الجوال
-                  </label>
-                  <input type="tel" id="phone" name="phone"
-                         class="form-input" placeholder="05xxxxxxxx" dir="ltr" />
+                <!-- بطاقة عمل 2 -->
+                <div class="portfolio-card-v2" data-title="هوية بصرية متكاملة لشركة استشارية" data-description="تطوير هوية بصرية شاملة تشمل الشعارات، الألوان، الخطوط، والمواد التسويقية لشركة استشارية رائدة." data-image="https://images.unsplash.com/photo-1552664730-d307ca8849d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBpZGVudGl0eXxlbnwwfHx8fDE3MjA0NDQ4MDN8MA&ixlib=rb-4.0.3&q=80&w=1080">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca8849d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHxjb3Jwb3JhdGUlMjBpZGVudGl0eXxlbnwwfHx8fDE3MjA0NDQ4MDN8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="هوية بصرية متكاملة لشركة استشارية">
+                    <div class="portfolio-overlay-v2">
+                        <h3 class="text-2xl font-bold mb-2">هوية بصرية لشركة استشارية</h3>
+                        <p class="text-base">احترافية وتميز في كل التفاصيل</p>
+                    </div>
                 </div>
-              </div>
-
-              <div class="mb-4">
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="email">
-                  البريد الإلكتروني <span class="text-red-400">*</span>
-                </label>
-                <input type="email" id="email" name="email" required
-                       class="form-input" placeholder="example@email.com" dir="ltr" />
-              </div>
-
-              <div class="mb-4">
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="service">
-                  نوع الخدمة المطلوبة
-                </label>
-                <select id="service" name="service" class="form-input">
-                  <option value="" disabled selected>اختر نوع الخدمة</option>
-                  <option value="logo">تصميم شعار</option>
-                  <option value="branding">هوية بصرية متكاملة</option>
-                  <option value="social">تصاميم سوشيال ميديا</option>
-                  <option value="print">تصميم مطبوعات</option>
-                  <option value="other">أخرى</option>
-                </select>
-              </div>
-
-              <div class="mb-6">
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="message">
-                  تفاصيل المشروع <span class="text-red-400">*</span>
-                </label>
-                <textarea id="message" name="message" required rows="4"
-                          class="form-input resize-none"
-                          placeholder="أخبرني عن مشروعك، ما الذي تحتاجه وما هو الهدف منه؟"></textarea>
-              </div>
-
-              <button type="submit" id="submit-btn" class="btn-primary w-full justify-center text-base py-3">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span id="btn-text">إرسال الرسالة</span>
-              </button>
-
-              <!-- رسالة النجاح -->
-              <div id="success-msg"
-                   class="hidden mt-4 bg-green-50 border border-green-200 text-green-700 rounded-xl px-4 py-3 text-sm font-semibold flex items-center gap-2">
-                <i class="fa-solid fa-circle-check text-green-500"></i>
-                شكراً لك! تم استلام رسالتك وسأتواصل معك قريباً.
-              </div>
-            </form>
-
-          </div>
+                <!-- بطاقة عمل 3 -->
+                <div class="portfolio-card-v2" data-title="تصاميم سوشيال ميديا لمقهى عصري" data-description="تصميم محتوى بصري جذاب وموحد لمنصات التواصل الاجتماعي لمقهى يقدم تجربة فريدة." data-image="https://images.unsplash.com/photo-1517230878791-4d28214b2995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYSUyMGNhZmUlMjBkZXNpZ258ZW53MHx8fHwxNzIwNDQ0ODA0fDA&ixlib=rb-4.0.3&q=80&w=1080">
+                    <img src="https://images.unsplash.com/photo-1517230878791-4d28214b2995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHxzb2NpYWwlMjBtZWRpYSUyMGNhZmUlMjBkZXNpZ258ZW53MHx8fHwxNzIwNDQ0ODA0fDA&ixlib=rb-4.0.3&q=80&w=1080" alt="تصاميم سوشيال ميديا لمقهى عصري">
+                    <div class="portfolio-overlay-v2">
+                        <h3 class="text-2xl font-bold mb-2">سوشيال ميديا لمقهى عصري</h3>
+                        <p class="text-base">تصاميم تجذب الأنظار وتفتح الشهية</p>
+                    </div>
+                </div>
+                <!-- بطاقة عمل 4 -->
+                <div class="portfolio-card-v2" data-title="تصميم واجهة مستخدم لتطبيق جوال" data-description="تصميم تجربة مستخدم (UX) وواجهة مستخدم (UI) لتطبيق جوال مبتكر، يجمع بين الجمال والوظائفية." data-image="https://images.unsplash.com/photo-1550745165-9ff0686872ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHx1aSUyMHV4JTIwZGVzaWdufGVufDB8fHx8MTcyMDQ0NDgwNHww&ixlib=rb-4.0.3&q=80&w=1080">
+                    <img src="https://images.unsplash.com/photo-1550745165-9ff0686872ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHx1aSUyMHV4JTIwZGVzaWdufGVufDB8fHx8MTcyMDQ0NDgwNHww&ixlib=rb-4.0.3&q=80&w=1080" alt="تصميم واجهة مستخدم لتطبيق جوال">
+                    <div class="portfolio-overlay-v2">
+                        <h3 class="text-2xl font-bold mb-2">واجهة مستخدم لتطبيق جوال</h3>
+                        <p class="text-base">تجربة سلسة وتصميم جذاب</p>
+                    </div>
+                </div>
+                <!-- بطاقة عمل 5 -->
+                <div class="portfolio-card-v2" data-title="إعادة تصميم هوية لمؤسسة تعليمية" data-description="تجديد شامل للهوية البصرية لمؤسسة تعليمية عريقة، لتعكس التطور والحداثة مع الحفاظ على الأصالة." data-image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb25hbCUyMGJyYW5kaW5nfGVufDB8fHx8MTcyMDQ0NDgwNXww&ixlib=rb-4.0.3&q=80&w=1080">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHxlZHVjYXRpb25hbCUyMGJyYW5kaW5nfGVufDB8fHx8MTcyMDQ0NDgwNXww&ixlib=rb-4.0.3&q=80&w=1080" alt="إعادة تصميم هوية لمؤسسة تعليمية">
+                    <div class="portfolio-overlay-v2">
+                        <h3 class="text-2xl font-bold mb-2">هوية لمؤسسة تعليمية</h3>
+                        <p class="text-base">تجديد يجمع بين الأصالة والحداثة</p>
+                    </div>
+                </div>
+                <!-- بطاقة عمل 6 -->
+                <div class="portfolio-card-v2" data-title="تصميم مواد تسويقية لحدث فني" data-description="تصميم ملصقات، منشورات، ومواد دعائية لحدث فني كبير، يعكس الروح الإبداعية للحدث." data-image="https://images.unsplash.com/photo-1501281668745-f7f5792d7c50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxhcnQlMjBldmVudCUyMHBvc3RlcnxlbnwwfHx8fDE3MjA0NDQ4MDV8MA&ixlib=rb-4.0.3&q=80&w=1080">
+                    <img src="https://images.unsplash.com/photo-1501281668745-f7f5792d7c50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHxhcnQlMjBldmVudCUyMHBvc3RlcnxlbnwwfHx8fDE3MjA0NDQ4MDV8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="تصميم مواد تسويقية لحدث فني">
+                    <div class="portfolio-overlay-v2">
+                        <h3 class="text-2xl font-bold mb-2">مواد تسويقية لحدث فني</h3>
+                        <p class="text-base">تصاميم تحكي قصة الإبداع</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <!-- نافذة المودال المنبثقة لتفاصيل العمل - النموذج الثاني -->
+    <div id="portfolioModal-v2" class="modal-v2">
+        <div class="modal-content-v2">
+            <span class="close-button-v2">&times;</span>
+            <img id="modalImage-v2" src="" alt="صورة العمل">
+            <h3 id="modalTitle-v2" class="text-3xl font-bold mb-3" style="color: var(--accent-color);"></h3>
+            <p id="modalDescription-v2" class="text-gray-700 text-lg"></p>
+        </div>
     </div>
-  </section>
 
-  <!-- ===================================================
-       الفوتر
-       =================================================== -->
-  <footer class="py-10 px-4 md:px-8 text-white">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- قسم التواصل (Contact) - النموذج الثاني -->
+    <section id="contact-v2" class="py-20 bg-accent-light">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-extrabold text-center mb-16" style="color: var(--accent-color);">تواصل معي</h2>
+            <div class="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-xl">
+                <p class="text-center text-xl mb-10 font-medium">دعنا نبدأ رحلة الإبداع معاً. تواصل معي اليوم لتحويل أفكارك إلى واقع بصري مذهل.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 contact-info-grid-v2">
+                    <a href="https://x.com/ax_9a9" target="_blank" class="flex flex-col items-center justify-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300 group">
+                        <div class="contact-icon-v2 mb-4"><i class="fab fa-twitter"></i></div>
+                        <span class="text-xl font-bold text-gray-800 group-hover:text-gray-900">تويتر (X)</span>
+                        <span class="text-gray-600">@ax_9a9</span>
+                    </a>
+                    <a href="https://wa.me/966507440452" target="_blank" class="flex flex-col items-center justify-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300 group">
+                        <div class="contact-icon-v2 mb-4"><i class="fab fa-whatsapp"></i></div>
+                        <span class="text-xl font-bold text-gray-800 group-hover:text-gray-900">واتساب</span>
+                        <span class="text-gray-600">0507440452</span>
+                    </a>
+                </div>
 
-        <!-- الشعار -->
-        <div class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center font-black text-lg">أ</div>
-          <span class="font-black text-xl">أبو محمد<span class="text-olive-muted">. ديزاين</span></span>
+                <h3 class="text-3xl font-bold mb-8 text-center" style="color: var(--accent-color);">أو أرسل لي رسالة مباشرة:</h3>
+                <form class="space-y-8">
+                    <div>
+                        <label for="name-v2" class="block text-lg font-medium text-gray-700 mb-3">الاسم الكامل</label>
+                        <input type="text" id="name-v2" name="name" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-color focus:border-transparent text-lg" placeholder="ادخل اسمك هنا" required>
+                    </div>
+                    <div>
+                        <label for="email-v2" class="block text-lg font-medium text-gray-700 mb-3">البريد الإلكتروني</label>
+                        <input type="email" id="email-v2" name="email" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-color focus:border-transparent text-lg" placeholder="ادخل بريدك الإلكتروني هنا" required>
+                    </div>
+                    <div>
+                        <label for="message-v2" class="block text-lg font-medium text-gray-700 mb-3">رسالتك</label>
+                        <textarea id="message-v2" name="message" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-color focus:border-transparent text-lg" placeholder="اكتب رسالتك هنا" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary-v2 w-full md:w-auto">إرسال الرسالة</button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <!-- روابط سريعة -->
-        <ul class="flex flex-wrap justify-center gap-6 text-white/70 font-medium text-sm">
-          <li><a href="#hero"      class="hover:text-white transition-colors">الرئيسية</a></li>
-          <li><a href="#portfolio" class="hover:text-white transition-colors">أعمالي</a></li>
-          <li><a href="#about"     class="hover:text-white transition-colors">عني</a></li>
-          <li><a href="#contact"   class="hover:text-white transition-colors">تواصل معي</a></li>
-        </ul>
-
-        <!-- أيقونات التواصل -->
-        <div class="flex items-center gap-3">
-          <a href="https://x.com/ax_9a9" target="_blank" rel="noopener noreferrer"
-             class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-             aria-label="تويتر">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-          <a href="https://wa.me/966507440452" target="_blank" rel="noopener noreferrer"
-             class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-             aria-label="واتساب">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-          <a href="mailto:your@email.com"
-             class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-             aria-label="البريد الإلكتروني">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-
-      </div>
-
-      <div class="border-t border-white/10 mt-8 pt-6 text-center text-white/50 text-sm">
-        <p>© <span id="current-year"></span> أبو محمد. ديزاين — جميع الحقوق محفوظة. صُمِّم بـ <span class="text-olive-muted">♥</span> واحترافية.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===================================================
-       JavaScript - المنطق التفاعلي
-       =================================================== -->
-  <script>
-    // ===================================================
-    // 1. تحديث السنة الحالية في الفوتر
-    // ===================================================
-    document.getElementById('current-year').textContent =  Date().getFullYear();
-
-    // ===================================================
-    // 2. تأثير الهيدر عند التمرير
-    // ===================================================
-     navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
-
-    // ===================================================
-    // 3. تفعيل/إغلاق القائمة الجانبية للجوال
-    // ===================================================
-     menuToggle  = document.getElementById('menu-toggle');
-     mobileMenu  = document.getElementById('mobile-menu');
-       menuOpen    = false;
-
-    menuToggle.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-       (menuOpen) {
-        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-        mobileMenu.style.opacity   = '1';
-        menuToggle.innerHTML = '<i class="fa-solid fa-xmark text-lg"></i>';
-      }  {
-        closeMobileMenu();
-      }
-    });
-
-     closeMobileMenu() {
-      menuOpen = false;
-      mobileMenu.style.maxHeight = '0';
-      mobileMenu.style.opacity   = '0';
-      menuToggle.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
-    }
-
-    // ===================================================
-    // 4. تأثير الكتابة المتحركة في Hero
-    // ===================================================
-     typedEl    = document.getElementById('typed-text');
-     typedWords = ['تصاميم', 'شعارات', 'هويات بصرية', 'إبداعات'];
-       wordIndex  = 0;
-       charIndex  = 0;
-       isDeleting = false;
-
-     typeEffect() {
-       currentWord = typedWords[wordIndex];
-       (isDeleting) {
-        typedEl.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      }  {
-        typedEl.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-       delay = isDeleting ? 80 : 130;
-
-       (!isDeleting && charIndex === currentWord.length) {
-        delay = 1800;
-        isDeleting = true;
-      }   (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex  = (wordIndex + 1) % typedWords.length;
-        delay = 400;
-      }
-
-      setTimeout(typeEffect, delay);
-    }
-    setTimeout(typeEffect, 800);
-
-    // ===================================================
-    // 5. فلترة الأعمال
-    // ===================================================
-     filterBtns  = document.querySelectorAll('.filter-btn');
-     portfolioCards = document.querySelectorAll('#portfolio-grid .portfolio-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // تحديث الزر النشط
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-         filter = btn.dataset.filter;
-
-        portfolioCards.forEach(card => {
-           category = card.dataset.category;
-           show = filter === 'all' || category === filter;
-
-           (show) {
-            card.style.display = '';
-            // إعادة تشغيل تأثير الظهور
-            card.classList.remove('visible');
-            setTimeout(() => card.classList.add('visible'), 50);
-          }  {
-            card.style.display = 'none';
-          }
+    <!-- JavaScript - النموذج الثاني -->
+    <script>
+        // JavaScript للهيدر الثابت وتأثير Glassmorphism
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar-v2');
+            if (window.scrollY > 50) {
+                navbar.classList.add('glassmorphism-v2');
+            } else {
+                navbar.classList.remove('glassmorphism-v2');
+            }
         });
-      });
-    });
 
-    // ===================================================
-    // 6. Modal - النافذة المنبثقة
-    // ===================================================
-     modalOverlay = document.getElementById('modal-overlay');
-     modalTitle   = document.getElementById('modal-title');
-     modalImg     = document.getElementById('modal-img');
-     modalDesc    = document.getElementById('modal-desc');
-     modalTags    = document.getElementById('modal-tags');
-
-    /**
-     * فتح النافذة المنبثقة بتفاصيل العمل
-     * @param {HTMLElement} card - عنصر البطاقة الذي تم الضغط عليه
-     */
-     openModal(card) {
-       title = card.dataset.title;
-       desc  = card.dataset.desc;
-       img   = card.dataset.img;
-       tags  = card.dataset.tags.split('،').map(t => t.trim());
-
-      // تعبئة بيانات النافذة
-      modalTitle.textContent = title;
-      modalDesc.textContent  = desc;
-      modalImg.src           = img;
-      modalImg.alt           = title;
-
-      // إنشاء تاغات الوسوم
-      modalTags.innerHTML = tags.map(tag =>
-        `<span class="px-3 py-1 rounded-full text-sm font-semibold"
-               style="background:#e8f4f3; color:#16625a;">${tag}</span>`
-      ).join('');
-
-      // إظهار النافذة
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    /**
-     * إغلاق النافذة المنبثقة
-     */
-     closeModal() {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    /**
-     * إغلاق النافذة عند الضغط خارجها
-     */
-     handleModalClick(e) {
-       (e.target === modalOverlay) closeModal();
-    }
-
-    // إغلاق النافذة بمفتاح Escape
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // ===================================================
-    // 7. نموذج التواصل - معالجة الإرسال
-    // ===================================================
-     handleFormSubmit(e) {
-      e.preventDefault();
-
-       form       = document.getElementById('contact-form');
-       submitBtn  = document.getElementById('submit-btn');
-       btnText    = document.getElementById('btn-text');
-       successMsg = document.getElementById('success-msg');
-
-      // التحقق من صحة الحقول
-       name    = document.getElementById('name').value.trim();
-       email   = document.getElementById('email').value.trim();
-       message = document.getElementById('message').value.trim();
-
-       (!name || !email || !message) {
-        // تمييز الحقول الفارغة
-        [document.getElementById('name'),
-         document.getElementById('email'),
-         document.getElementById('message')].forEach(field => {
-           (!field.value.trim()) {
-            field.style.borderColor = '#ef4444';
-            field.addEventListener('input', () => {
-              field.style.borderColor = '';
-            }, { once: true });
-          }
+        // JavaScript لقائمة الهامبرغر (Hamburger Menu) في الجوال
+        document.querySelector('.hamburger-menu-v2').addEventListener('click', function() {
+            document.querySelector('.navbar-links-v2').classList.toggle('active');
         });
-        ;
-      }
 
-      // تأثير التحميل
-      submitBtn.disabled = true;
-      btnText.textContent = 'جاري الإرسال...';
-      submitBtn.querySelector('i').className = 'fa-solid fa-spinner fa-spin';
+        // JavaScript لفتح وإغلاق المودال (Modal Popup)
+        const portfolioCardsV2 = document.querySelectorAll('.portfolio-card-v2');
+        const modalV2 = document.getElementById('portfolioModal-v2');
+        const modalImageV2 = document.getElementById('modalImage-v2');
+        const modalTitleV2 = document.getElementById('modalTitle-v2');
+        const modalDescriptionV2 = document.getElementById('modalDescription-v2');
+        const closeButtonV2 = document.querySelector('.close-button-v2');
 
-      // ===================================================
-      // ملاحظة: هذا النموذج يعرض رسالة نجاح فقط.
-      // لربطه بخدمة حقيقية، يمكنك استخدام:
-      // - Formspree: https://formspree.io
-      // - EmailJS: https://www.emailjs.com
-      // - أو أي Backend API خاص بك
-      // ===================================================
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        btnText.textContent = 'إرسال الرسالة';
-        submitBtn.querySelector('i').className = 'fa-solid fa-paper-plane';
-        successMsg.classList.remove('hidden');
-        form.reset();
+        portfolioCardsV2.forEach(card => {
+            card.addEventListener('click', function() {
+                modalImageV2.src = this.dataset.image;
+                modalTitleV2.textContent = this.dataset.title;
+                modalDescriptionV2.textContent = this.dataset.description;
+                modalV2.style.display = 'flex';
+            });
+        });
 
-        // إخفاء رسالة النجاح بعد 6 ثوانٍ
-        setTimeout(() => successMsg.classList.add('hidden'), 6000);
-      }, 1800);
-    }
+        closeButtonV2.addEventListener('click', function() {
+            modalV2.style.display = 'none';
+        });
 
-    // ===================================================
-    // 8. تأثير ظهور العناصر عند التمرير (Intersection Observer)
-    // ===================================================
-     revealObserver =  IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-         (entry.isIntersecting) {
-          // تأخير متدرج للعناصر المتعددة
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, i * 80);
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        window.addEventListener('click', function(event) {
+            if (event.target == modalV2) {
+                modalV2.style.display = 'none';
+            }
+        });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        // إغلاق قائمة الهامبرغر عند النقر على رابط
+        document.querySelectorAll('.navbar-links-v2 a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarLinks = document.querySelector('.navbar-links-v2');
+                if (navbarLinks.classList.contains('active')) {
+                    navbarLinks.classList.remove('active');
+                }
+            });
+        });
 
-    // ===================================================
-    // 9. تمييز رابط التنقل النشط عند التمرير
-    // ===================================================
-     sections  = document.querySelectorAll('section[id], div[id="hero"]');
-     navLinks  = document.querySelectorAll('.nav-link');
+        // منع إرسال نموذج التواصل افتراضياً (لأنه لا يوجد backend)
+        document.querySelector('#contact-v2 form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('تم استلام رسالتك بنجاح! (هذا مجرد عرض، لا يوجد إرسال فعلي للرسائل).');
+            this.reset();
+        });
 
-     sectionObserver =  IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-         (entry.isIntersecting) {
-           id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    }, { threshold: 0.4 });
-
-    document.querySelectorAll('section[id]').forEach(sec => sectionObserver.observe(sec));
-  </script>
-
+    </script>
 </body>
 </html>
