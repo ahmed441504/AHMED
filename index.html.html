@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمالي الشخصي</title>
+    <style>
+        /* تنسيقات عامة للموقع */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* الهيدر / شريط التنقل */
+        header {
+            background-color: #1a252f;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* القسم التعريفي */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .hero h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* شبكة عرض الأعمال */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* كارت العمل الواحد */
+        .project-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* حركة عند مرور الماوس تبين أنه للمشاهدة فقط ولا يمكن التعديل */
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background-color: #bdc3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-weight: bold;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .project-info p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* الفوتر / أسفل الصفحة */
+        footer {
+            background-color: #1a252f;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل العلوي -->
+    <header>
+        <h1>معرض أعمالي الرقمي</h1>
+    </header>
+
+    <!-- قسم النبذة التعريفية -->
+    <section class="hero">
+        <h2>أهلاً بك في مساحتي الخاصة</h2>
+        <p>هنا أعرض لكم أبرز المشاريع والأعمال التي قمت بإنجازها. يمكنك التصفح والمشاهدة بكل حرية.</p>
+    </section>
+
+    <!-- قسم عرض الأعمال (المشاهدة فقط) -->
+    <main class="portfolio-container">
+        
+        <!-- العمل الأول -->
+        <article class="project-card">
+            <!-- يمكنك استبدال النص أدناه برابط صورتك مستقبلاً <img src="رابط_الصورة.jpg" alt="اسم المشروع"> -->
+            <div class="project-image">صورة المشروع الأول</div>
+            <div class="project-info">
+                <h3>اسم المشروع الأول</h3>
+                <p>هنا يكتب وصف مختصر وبسيط عن المشروع، الأدوات المستخدمة في إنجازه، والهدف منه ليطلع عليه الزوار.</p>
+            </div>
+        </article>
+
+        <!-- العمل الثاني -->
+        <article class="project-card">
+            <div class="project-image">صورة المشروع الثاني</div>
+            <div class="project-info">
+                <h3>اسم المشروع الثاني</h3>
+                <p>هنا يكتب وصف مختصر وبسيط عن المشروع، الأدوات المستخدمة في إنجازه، والهدف منه ليطلع عليه الزوار.</p>
+            </div>
+        </article>
+
+        <!-- العمل الثالث -->
+        <article class="project-card">
+            <div class="project-image">صورة المشروع الثالث</div>
+            <div class="project-info">
+                <h3>اسم المشروع الثالث</h3>
+                <p>هنا يكتب وصف مختصر وبسيط عن المشروع، الأدوات المستخدمة في إنجازه، والهدف منه ليطلع عليه الزوار.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- أسفل الصفحة وحقوق الحفظ -->
+    <footer>
+        <p>جميع الحقوق محفوظة © ٢٠٢٦ | الموقع للمشاهدة والتصفح فقط</p>
+    </footer>
+
+</body>
+</html>
