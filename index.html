@@ -1,217 +1,179 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { ArrowUpLeft, Instagram, Mail, Linkedin, Palette, Sparkles, Layers, Send } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
-import portraitImg from "@/assets/portrait.jpg";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
-import work5 from "@/assets/work-5.jpg";
-import work6 from "@/assets/work-6.jpg";
-
-export const Route = createFileRoute("/")({ component: Index });
-
-const works = [
-  { img: work1, title: "هوية بصرية — Discot", cat: "Branding", year: "2025" },
-  { img: work2, title: "حملة سوشيال — رمضان", cat: "Social", year: "2025" },
-  { img: work3, title: "بوستر تايبوغرافي", cat: "Print", year: "2024" },
-  { img: work4, title: "تغليف منتج فاخر", cat: "Packaging", year: "2024" },
-  { img: work5, title: "تصميم واجهة تطبيق", cat: "UI / UX", year: "2025" },
-  { img: work6, title: "مجلة إديتوريال", cat: "Editorial", year: "2024" },
-];
-
-const services = [
-  { icon: Sparkles, title: "هوية بصرية", desc: "بناء هويات متكاملة من الشعار إلى دليل الاستخدام." },
-  { icon: Palette, title: "تصاميم سوشيال ميديا", desc: "محتوى بصري يعكس صوت علامتك ويلفت الجمهور." },
-  { icon: Layers, title: "طباعة وتغليف", desc: "بوسترات، مطبوعات، وتغليف بحسّ فني عالٍ." },
-];
-
-function Index() {
-  return (
-    <div className="min-h-screen font-sans text-foreground overflow-x-hidden">
-      {/* Nav */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/40 border-b border-border/50">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display text-xl font-bold">نور<span className="text-gradient">.</span></a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#work" className="hover:text-foreground transition">الأعمال</a>
-            <a href="#about" className="hover:text-foreground transition">عني</a>
-            <a href="#services" className="hover:text-foreground transition">الخدمات</a>
-            <a href="#contact" className="hover:text-foreground transition">تواصل</a>
-          </nav>
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium bg-primary text-primary-foreground hover:opacity-90 transition">
-            ابدأ مشروع <ArrowUpLeft className="size-4" />
-          </a>
-        </div>
-      </header>
-
-      {/* Hero */}
-      <section id="top" className="relative pt-32 pb-24 px-6 grain">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-end">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="lg:col-span-7">
-            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Graphic Designer · Art Director · 2024 —</p>
-            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-[0.95]">
-              أصمّم <span className="text-gradient">هويات</span><br />تُروى ولا تُنسى.
-            </h1>
-            <p className="mt-8 max-w-lg text-lg text-muted-foreground leading-relaxed">
-              مصمم جرافيك مستقل، أشتغل على مشاريع الهوية البصرية والتصميم الإبداعي مع علامات جريئة تبحث عن حضور بصري مختلف.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a href="#work" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium bg-primary text-primary-foreground shadow-[var(--shadow-glow)] hover:translate-y-[-2px] transition-transform">شاهد الأعمال</a>
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium border border-border hover:bg-surface transition">تواصل معي</a>
-            </div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }} className="lg:col-span-5">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)]">
-              <img src={heroImg} alt="عمل بصري مميز" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Ticker */}
-        <div className="mt-24 border-y border-border/60 py-6 overflow-hidden">
-          <div className="flex gap-16 whitespace-nowrap animate-[scroll_40s_linear_infinite] font-display text-2xl text-muted-foreground">
-            {Array.from({ length: 2 }).map((_, i) => (
-              <div key={i} className="flex gap-16 shrink-0">
-                <span>هوية بصرية</span><span>✦</span><span>سوشيال ميديا</span><span>✦</span>
-                <span>تايبوغرافي</span><span>✦</span><span>تغليف</span><span>✦</span>
-                <span>مطبوعات</span><span>✦</span><span>Art Direction</span><span>✦</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Work — Masonry */}
-      <section id="work" className="px-6 py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3">Selected Works</p>
-              <h2 className="font-display text-4xl sm:text-5xl font-bold">أعمال مختارة.</h2>
-            </div>
-            <p className="max-w-sm text-muted-foreground">مجموعة من المشاريع اللي اشتغلت عليها لعملاء محليين وعالميين خلال آخر سنتين.</p>
-          </div>
-
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
-            {works.map((w, i) => (
-              <motion.a key={w.title} href="#"
-                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay: (i % 3) * 0.1 }}
-                className="group relative block mb-6 break-inside-avoid rounded-2xl overflow-hidden bg-surface border border-border/60">
-                <img src={w.img} alt={w.title} loading="lazy" className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-0 inset-x-0 p-5 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span>{w.cat}</span><span>{w.year}</span>
-                  </div>
-                  <h3 className="font-display font-semibold text-lg">{w.title}</h3>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="px-6 py-24 bg-surface/40">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.8 }} className="lg:col-span-5">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-              <img src={portraitImg} alt="نور — مصمم جرافيك" loading="lazy" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-border rounded-2xl" />
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.8 }} className="lg:col-span-7">
-            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">About</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold leading-tight">
-              مصمم يعشق التفاصيل، ويؤمن إن كل تصميم يحكي قصة.
-            </h2>
-            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-              بخبرة تتجاوز الست سنوات، اشتغلت مع شركات ناشئة وعلامات كبيرة على بناء هويات بصرية وحملات إبداعية.
-              أدواتي المفضلة Illustrator وFigma وAfter Effects، ولغتي الأولى هي التركيبة والفراغ.
-            </p>
-            <div className="mt-10 grid grid-cols-3 gap-6">
-              {[["+80", "مشروع منجز"], ["+40", "عميل حول العالم"], ["6", "سنوات خبرة"]].map(([n, l]) => (
-                <div key={l} className="border-t border-border pt-4">
-                  <div className="font-display text-3xl font-bold text-gradient">{n}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{l}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="px-6 py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-14">
-            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3">Services</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold">وش أقدر أسوي لك؟</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {services.map((s, i) => (
-              <motion.div key={s.title}
-                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group relative rounded-2xl p-8 bg-surface border border-border/60 hover:border-primary/50 transition-colors">
-                <div className="size-12 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <s.icon className="size-6" />
-                </div>
-                <h3 className="font-display text-2xl font-semibold mb-3">{s.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="px-6 py-24">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Let's Talk</p>
-          <h2 className="font-display text-5xl sm:text-7xl font-extrabold leading-[1]">
-            عندك فكرة؟<br /><span className="text-gradient">خلينا نطوّرها.</span>
-          </h2>
-          <p className="mt-8 max-w-xl mx-auto text-muted-foreground text-lg">
-            متاح لاستقبال مشاريع جديدة. راسلني وخلني أساعدك تبني حضور بصري لا يُنسى.
-          </p>
-          <a href="mailto:hello@noor.studio"
-            className="mt-10 inline-flex items-center gap-3 rounded-full px-8 py-4 text-base font-medium bg-primary text-primary-foreground shadow-[var(--shadow-glow)] hover:translate-y-[-2px] transition-transform">
-            <Send className="size-4" /> hello@noor.studio
-          </a>
-          <div className="mt-10 flex justify-center gap-4">
-            {[{ icon: Instagram, href: "#" }, { icon: Linkedin, href: "#" }, { icon: Mail, href: "mailto:hello@noor.studio" }].map((s, i) => (
-              <a key={i} href={s.href} className="size-11 rounded-full border border-border flex items-center justify-center hover:bg-surface hover:border-primary/50 transition">
-                <s.icon className="size-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 py-10 border-t border-border/60">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div>© {new Date().getFullYear()} استوديو نور. جميع الحقوق محفوظة.</div>
-          <div className="font-display">Crafted with care.</div>
-        </div>
-      </footer>
-
-      <style>{`
-        @keyframes scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أبو محمد | مصمم ومبدع بصري - معرض أعمالي</title>
+    <style>
+        /* إعدادات الخطوط والخلفية العامة للموقع */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6; /* خلفية رمادية فاتحة مريحة للعين */
+            color: #333;
         }
-      `}</style>
-    </div>
-  );
-}
+
+        /* 1. شريط العنوان العلوي (ثابت ولونه كحلي داكن) */
+        header {
+            background-color: #1a252f; /* اللون الكحلي الداكن */
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky; /* لجعل الشريط ثابتاً في الأعلى عند النزول */
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .brand {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+
+        header .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* 2. القسم التعريفي والترحيب (مساحة بيضاء واسعة) */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fff; /* خلفية بيضاء نقية */
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .hero h2 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* 3. شبكة عرض الأعمال (Portfolio Grid) */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            /* تقسيم تلقائي مرن ليناسب الجوال والكمبيوتر */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* تصميم كارت أو بطاقة العمل الواحد */
+        .project-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* حركة جمالية تفاعلية عند مرور ماوس المشاهد فوق البطاقة */
+        .project-card:hover {
+            transform: translateY(-8px); /* ترتفع البطاقة برفق للأعلى */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* مربع الصورة الخاص بالمشروع */
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background-color: #bdc3c7; /* لون رمادي مؤقت يمثل مكان الصورة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* تفاصيل ونصوص العمل داخل البطاقة */
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 20px;
+        }
+
+        .project-info p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 4. أسفل الصفحة (الفوتر الداكن للحقوق والخصوصية) */
+        footer {
+            background-color: #111a22; /* شريط داكن جداً */
+            color: #bbb;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 60px;
+            font-size: 14px;
+            border-top: 1px solid #1a252f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">أبو محمد | مصمم ومبدع بصري</div>
+        <div class="title">معرض أعمالي</div>
+    </header>
+
+    <section class="hero">
+        <h2>أهلاً بك في مساحتي الخاصة</h2>
+        <p>هنا أعرض لكم أبرز المشاريع والأعمال التي قمت بإنجازها. يمكنك التصفح والمشاهدة بكل حرية.</p>
+    </section>
+
+    <main class="portfolio-container">
+        
+        <article class="project-card">
+            <div class="project-image">مربع صورة المشروع الأول</div>
+            <div class="project-info">
+                <h3>اسم المشروع الأول</h3>
+                <p>هنا يكتب وصف مختصر وبسيط عن المشروع، الأدوات التي استخدمتها في إنجازه، والنتيجة التي حققتها ليطلع عليها زوار موقعك.</p>
+            </div>
+        </article>
+
+        <article class="project-card">
+            <div class="project-image">مربع صورة المشروع الثاني</div>
+            <div class="project-info">
+                <h3>اسم المشروع الثاني</h3>
+                <p>هنا يكتب وصف مختصر وبسيط عن المشروع، الأدوات التي استخدمتها في إنجازه، والنتيجة التي حققتها ليطلع عليها زوار موقعك.</p>
+            </div>
+        </article>
+
+        <article class="project-card">
+            <div class="project-image">مربع صورة المشروع الثالث</div>
+            <div class="project-info">
+                <h3>اسم المشروع الثالث</h3>
+                <p>هنا يكتب وصف مختصر وبسيط عن المشروع، الأدوات التي استخدمتها في إنجازه، والنتيجة التي حققتها ليطلع عليها زوار موقعك.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © ٢٠٢٦ | الموقع للمشاهدة والتصفح فقط</p>
+    </footer>
+
+</body>
+</html>
